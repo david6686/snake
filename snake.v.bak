@@ -9,8 +9,5 @@ input [3:0]sw;
 input [2:0]button
 reg [21:0]clkcount;
 //clk,rst,hold,p,led,hex1_d,hex0_d
-assign p[3]=sw[3];
-assign p[2]=sw[2];
-assign p[1]=sw[1];
-assign p[0]=sw[0];
+
 endmodule 
