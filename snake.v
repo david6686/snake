@@ -5,20 +5,54 @@ output [6:0]hex1_d;
 output [6:0]hex2_d;
 output [6:0]hex3_d;
 reg [2:0]hex_d[11:0];
-reg [4:0]headx;
-reg [2:0]heady;
-reg direction;
+reg [4:0]headx=5'd11;
+reg [2:0]heady=3'd0;
+reg [1:0]direction=2'b00;
+reg blockdirection=1'b0;
 output [3:0]p;
 input clk;
 input [3:0]sw;
 input [2:0]button;
 reg [21:0]clkcount;
+integer i;
 //clk,rst,hold,p,led,hex1_d,hex0_d
 /*switch control point*/
+/*initialization*/
+initial begin
+	for (i = 0; i < 12; i = i + 1)
+	begin
+		hex_d[i]=3'b111;
+	end
+	hex_d[11][0]=1'b0;
+end
+/*end*/
 assign p[3]=sw[3];
 assign p[2]=sw[2];
 assign p[1]=sw[1];
 assign p[0]=sw[0];
+/*direction*/
+always
+begin
+	if(button[2]==1'b0)
+	begin
+		if(button[1]==1'b1&&button[0]==1'b0)
+		begin
+			direction=2'b11;
+		end
+		if(button[1]==1'b0&&button[0]==1'b1)
+		begin
+			direction=2'b01;
+		end
+		else
+		begin
+			direction=2'b00;
+		end
+	end
+	else
+	begin
+		direction=2'b10;
+	end
+end
 /*end*/
 /*hex0_d  (left 1 7seg)*/
 assign hex0_d[0]=hex_d[2][0];
