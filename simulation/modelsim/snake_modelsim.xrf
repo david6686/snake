@@ -1,6 +1,10 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/user/Desktop/snake/snake.v
-source_file = 1, C:/Users/user/Desktop/snake/db/snake.cbx.xml
+source_file = 1, C:/Users/user/Documents/GitHub/snake/snake.v
+source_file = 1, C:/Users/user/Documents/GitHub/snake/up.v
+source_file = 1, C:/Users/user/Documents/GitHub/snake/left.v
+source_file = 1, C:/Users/user/Documents/GitHub/snake/right.v
+source_file = 1, C:/Users/user/Documents/GitHub/snake/down.v
+source_file = 1, C:/Users/user/Documents/GitHub/snake/db/snake.cbx.xml
 design_name = snake
 instance = comp, \hex3_d[0]~output , hex3_d[0]~output, snake, 1
 instance = comp, \hex3_d[1]~output , hex3_d[1]~output, snake, 1

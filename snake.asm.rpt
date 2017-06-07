@@ -1,5 +1,5 @@
 Assembler report for snake
-Wed May 31 20:17:31 2017
+Wed Jun 07 19:47:31 2017
 Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
 
 
@@ -10,7 +10,7 @@ Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/user/Desktop/snake/snake.sof
+  5. Assembler Device Options: C:/Users/user/Documents/GitHub/snake/snake.sof
   6. Assembler Messages
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed May 31 20:17:31 2017 ;
+; Assembler Status      ; Successful - Wed Jun 07 19:47:31 2017 ;
 ; Revision Name         ; snake                                 ;
 ; Top-level Entity Name ; snake                                 ;
 ; Family                ; Cyclone III                           ;
@@ -77,24 +77,24 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+---------------------------------------+
-; Assembler Generated Files             ;
-+---------------------------------------+
-; File Name                             ;
-+---------------------------------------+
-; C:/Users/user/Desktop/snake/snake.sof ;
-+---------------------------------------+
++------------------------------------------------+
+; Assembler Generated Files                      ;
++------------------------------------------------+
+; File Name                                      ;
++------------------------------------------------+
+; C:/Users/user/Documents/GitHub/snake/snake.sof ;
++------------------------------------------------+
 
 
-+-----------------------------------------------------------------+
-; Assembler Device Options: C:/Users/user/Desktop/snake/snake.sof ;
-+----------------+------------------------------------------------+
-; Option         ; Setting                                        ;
-+----------------+------------------------------------------------+
-; Device         ; EP3C16F484C6                                   ;
-; JTAG usercode  ; 0xFFFFFFFF                                     ;
-; Checksum       ; 0x000C9582                                     ;
-+----------------+------------------------------------------------+
++--------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/user/Documents/GitHub/snake/snake.sof ;
++----------------+---------------------------------------------------------+
+; Option         ; Setting                                                 ;
++----------------+---------------------------------------------------------+
+; Device         ; EP3C16F484C6                                            ;
+; JTAG usercode  ; 0xFFFFFFFF                                              ;
+; Checksum       ; 0x000C9606                                              ;
++----------------+---------------------------------------------------------+
 
 
 +--------------------+
@@ -103,13 +103,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II Assembler
     Info: Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed May 31 20:17:30 2017
+    Info: Processing started: Wed Jun 07 19:47:30 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off snake -c snake
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 214 megabytes
-    Info: Processing ended: Wed May 31 20:17:31 2017
+    Info: Processing ended: Wed Jun 07 19:47:31 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

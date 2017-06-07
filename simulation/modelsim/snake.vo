@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II"
 // VERSION "Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition"
 
-// DATE "05/31/2017 20:17:32"
+// DATE "06/07/2017 19:47:33"
 
 // 
 // Device: Altera EP3C16F484C6 Package FBGA484
@@ -438,7 +438,7 @@ defparam \hex0_d[0]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X21_Y29_N30
 cycloneiii_io_obuf \hex0_d[1]~output (
-	.i(vcc),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -477,7 +477,7 @@ defparam \hex0_d[3]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X26_Y29_N9
 cycloneiii_io_obuf \hex0_d[4]~output (
-	.i(vcc),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
