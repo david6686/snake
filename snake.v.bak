@@ -6,6 +6,10 @@ output [6:0]hex2_d;
 output [6:0]hex3_d;
 //output testled;
 reg [2:0]hex_d[11:0];
+reg  [8:0]record[20:0];
+reg x;
+reg y;
+integer length=1;
 //reg [4:0]headx=5'd9;
 //reg [2:0]heady=3'd1;
 integer headx;
@@ -43,6 +47,9 @@ initial begin
 	//direction;
 	lasttailx=headx;
 	lasttaily=heady;
+	x=headx;
+	y=heady;
+	record[length]={x,y};
 end
 /*end*/
 assign p[3]=!sw[3];
@@ -102,6 +109,8 @@ begin
 	&&(tempdirection==2'b11&&direction==2'b01))
 		direction=tempdirection;
 	tempdirection=direction;
+	if(error==1'b0)
+	begin
 	//direction
 	if(button[2]==1'b1)
 	begin
@@ -268,7 +277,7 @@ begin
 	begin
 		headx=10;
 	end
-	else if(&headx==3)
+	else if(headx==3)
 	begin
 		headx=9;
 	end
@@ -286,7 +295,62 @@ begin
 		headx=0;
 	end
 
+	//detect eat and get longer
+	if((headx==0&&heady==0&&blockdirection==1'b1)
+		&&(headx==9&&heady==0&&blockdirection==1'b0)
+		&&(headx==0&&heady==2&&blockdirection==1'b1)
+		&&(headx==3&&heady==2&&blockdirection==1'b1)
+		&&(headx==6&&heady==2&&blockdirection==1'b1)
+		&&(headx==3&&heady==0)
+		&&(headx==6&&heady==0)
+		)
+		begin
+			delete=1'b0;
+		end
+	//delete
+	if(delete==1'b1)
+	begin
+		
+	end
+	//error detect
+	if(hex_d[headx][heady]==1'b1)
+		error=1'b1;
+	//print
 	hex_d[headx][heady]=1'b0;
+	
+	end
+	//error
+	else
+	begin
+		hex_d[0][0]=1'b0;
+		hex_d[0][1]=1'b0;
+		hex_d[0][2]=1'b1;
+		hex_d[1][0]=1'b0;
+		hex_d[1][1]=1'b0;
+		hex_d[1][2]=1'b1;
+		hex_d[2][0]=1'b0;
+		hex_d[3][0]=1'b1;
+		hex_d[3][1]=1'b0;
+		hex_d[3][2]=1'b0;
+		hex_d[4][0]=1'b0;
+		hex_d[4][1]=1'b0;
+		hex_d[4][2]=1'b0;
+		hex_d[5][0]=1'b0;
+		hex_d[6][0]=1'b1;
+		hex_d[6][1]=1'b0;
+		hex_d[6][2]=1'b0;
+		hex_d[7][0]=1'b0;
+		hex_d[7][1]=1'b0;
+		hex_d[7][2]=1'b0;
+		hex_d[8][0]=1'b0;
+		hex_d[9][0]=1'b0;
+		hex_d[9][1]=1'b1;
+		hex_d[9][2]=1'b1;
+		hex_d[10][0]=1'b1;
+		hex_d[10][1]=1'b1;
+		hex_d[10][2]=1'b1;
+		hex_d[11][0]=1'b1;
+	end
 	//hex_d[10][1]=1'b0;
 	//headx=5'd11;
 	//heady=3'd1;
