@@ -1,4 +1,4 @@
-module up(headx,heady,direction,hex_d);
+module directionmove(headx,heady,direction,hex_d);
 input headx;
 input heady;
 input direction;
