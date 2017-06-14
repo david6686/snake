@@ -108,4 +108,5 @@ set_location_assignment PIN_F1 -to button[2]
 set_location_assignment PIN_G3 -to button[1]
 set_location_assignment PIN_H2 -to button[0]
 set_location_assignment PIN_J1 -to testled
+set_location_assignment PIN_J6 -to rst
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

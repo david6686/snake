@@ -1,9 +1,10 @@
-module snake(hex3_d,hex2_d,hex1_d,hex0_d,p,sw,button,clk);
+module snake(hex3_d,hex2_d,hex1_d,hex0_d,p,sw,button,clk,rst);
 //hex3_d,hex2_d,hex1_d,hex0_d
 output [6:0]hex0_d;
 output [6:0]hex1_d;
 output [6:0]hex2_d;
 output [6:0]hex3_d;
+input rst;
 //output testled;
 reg [2:0]hex_d[11:0];
 reg  [8:0]record[20:0];
@@ -64,6 +65,8 @@ heady = 2;
 hex_d[headx][heady]<=1'b0;
 end
 */
+//reset
+
 /*clk*/
 always@(posedge clk)
 begin
@@ -100,7 +103,7 @@ end
 */
 always@(posedge cycle)
 begin
-	delete=1'b1;
+delete=1'b1;
 	tempheadx=headx;
 	tempheady=heady;
 	if((tempdirection==2'b00&&direction==2'b10)
@@ -109,7 +112,53 @@ begin
 	&&(tempdirection==2'b11&&direction==2'b01))
 		direction=tempdirection;
 	tempdirection=direction;
-	if(error==1'b0)
+////
+	if(rst==1'b1)
+	begin
+		error=1'b0;
+		tempdirection=2'b11;
+		direction=2'b11;
+		blockdirection=1'b0;
+		hex_d[0][0]=1'b1;
+		hex_d[0][1]=1'b1;
+		hex_d[0][2]=1'b1;
+		hex_d[1][0]=1'b1;
+		hex_d[1][1]=1'b1;
+		hex_d[1][2]=1'b1;
+		hex_d[2][0]=1'b1;
+		hex_d[3][0]=1'b1;
+		hex_d[3][1]=1'b1;
+		hex_d[3][2]=1'b1;
+		hex_d[4][0]=1'b1;
+		hex_d[4][1]=1'b1;
+		hex_d[4][2]=1'b1;
+		hex_d[5][0]=1'b1;
+		hex_d[6][0]=1'b1;
+		hex_d[6][1]=1'b1;
+		hex_d[6][2]=1'b1;
+		hex_d[7][0]=1'b1;
+		hex_d[7][1]=1'b1;
+		hex_d[7][2]=1'b1;
+		hex_d[8][0]=1'b1;
+		hex_d[9][0]=1'b1;
+		hex_d[9][1]=1'b1;
+		hex_d[9][2]=1'b1;
+		hex_d[10][0]=1'b1;
+		hex_d[10][1]=1'b1;
+		hex_d[10][2]=1'b1;
+		hex_d[11][0]=1'b1;
+		hex_d[7][0]=1'b0;
+	headx=7;
+	heady=0;
+	//direction;
+	lasttailx=headx;
+	lasttaily=heady;
+	x=headx;
+	y=heady;
+	end
+	////
+	
+	else if(error==1'b0)
 	begin
 	//direction
 	if(button[2]==1'b1)
@@ -153,6 +202,7 @@ begin
 		begin
 			headx=headx+1;
 		end
+		blockdirection=1'b0;
 	end
 	2'b01:
 	begin
@@ -233,21 +283,22 @@ begin
 	end*/
 	endcase
 	
+	
 	//check over range
 	//up range
-	if(tempheadx==11&&headx==12)
+	if(tempheadx==10&&headx==11&&direction==2'b00)
 	begin
 		headx=9;
 	end
-	else if(tempheadx==8&&headx==9)
+	else if(tempheadx==7&&headx==8&&direction==2'b00)
 	begin
 		headx=6;
 	end
-	else if(tempheadx==5&&headx==6)
+	else if(tempheadx==4&&headx==5&&direction==2'b00)
 	begin
 		headx=3;
 	end
-	else if(tempheadx==2&&headx==3)
+	else if(tempheadx==1&&headx==2&&direction==2'b00)
 	begin
 		headx=0;
 	end
@@ -277,7 +328,7 @@ begin
 	begin
 		headx=10;
 	end
-	else if(headx==3)
+	else if(headx==-3)
 	begin
 		headx=9;
 	end
@@ -315,12 +366,44 @@ begin
 	//error detect
 	if(hex_d[headx][heady]==1'b0)
 		error=1'b1;
+		/*
+	//up range
+	if(tempheadx==10&&headx==11&&direction==2'b00)
+	begin
+		error=1'b1;
+	end
+	else if(tempheadx==7&&headx==8&&direction==2'b00)
+	begin
+		error=1'b1;
+	end
+	else if(tempheadx==4&&headx==5&&direction==2'b00)
+	begin
+		error=1'b1;
+	end
+	else if(tempheadx==1&&headx==2&&direction==2'b00)
+	begin
+		error=1'b1;
+	end
+	//down range
+	else if(tempheadx==0&&headx==-1)
+	begin
+		error=1'b1;
+	end
+	else if(tempheadx==3&&headx==2)
+	begin
+		error=1'b1;
+	end
+	else if(tempheadx==6&&headx==5)
+	begin
+		error=1'b1;
+	end
+	*/
 	//print
 	hex_d[headx][heady]=1'b0;
-	
+	//hex_d[tempheadx][tempheady]=1'b1;
 	end
 	//error
-	else
+	if(error==1'b1)
 	begin
 		hex_d[0][0]=1'b0;
 		hex_d[0][1]=1'b0;
