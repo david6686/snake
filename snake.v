@@ -10,6 +10,7 @@ reg [2:0]hex_d[11:0];
 reg  [8:0]record[20:0];
 reg x;
 reg y;
+reg [3:0]regp=3'b000;
 integer length=1;
 //reg [4:0]headx=5'd9;
 //reg [2:0]heady=3'd1;
@@ -53,10 +54,15 @@ initial begin
 	record[length]={x,y};
 end
 /*end*/
+/*
 assign p[3]=!sw[3];
 assign p[2]=!sw[2];
 assign p[1]=!sw[1];
-assign p[0]=!sw[0];
+assign p[0]=!sw[0];*/
+assign p[3]=!regp[3];
+assign p[2]=!regp[2];
+assign p[1]=!regp[1];
+assign p[0]=!regp[0];
 /*
 always@(*)
 begin
@@ -103,14 +109,25 @@ end
 */
 always@(posedge cycle)
 begin
-delete=1'b1;
+	if(sw[0])
+		regp[0]=1'b1;
+	if(sw[1])
+		regp[1]=1'b1;
+	if(sw[2])
+		regp[2]=1'b1;
+	if(sw[3])
+		regp[3]=1'b1;
+	delete=1'b1;
 	tempheadx=headx;
 	tempheady=heady;
 	if((tempdirection==2'b00&&direction==2'b10)
-	&&(tempdirection==2'b01&&direction==2'b11)
-	&&(tempdirection==2'b10&&direction==2'b00)
-	&&(tempdirection==2'b11&&direction==2'b01))
-		direction=tempdirection;
+	||(tempdirection==2'b01&&direction==2'b11)
+	||(tempdirection==2'b10&&direction==2'b00)
+	||(tempdirection==2'b11&&direction==2'b01))
+	begin
+		//direction=tempdirection;
+		error=1'b1;
+	end
 	tempdirection=direction;
 ////
 	if(rst==1'b1)
@@ -180,6 +197,23 @@ delete=1'b1;
 	begin
 		direction=2'b10;
 	end
+	/*point*/
+	if(headx==0&&heady==0&&direction==2'b01)
+		regp[3]=1'b0;
+	if(headx==0&&heady==0&&direction==2'b11)
+		regp[0]=1'b0;
+	if(headx==3&&heady==0&&direction==2'b01)
+		regp[1]=1'b0;
+	if(headx==3&&heady==0&&direction==2'b11)
+		regp[3]=1'b0;
+	if(headx==6&&heady==0&&direction==2'b01)
+		regp[1]=1'b0;
+	if(headx==6&&heady==0&&direction==2'b11)
+		regp[2]=1'b0;
+	if(headx==9&&heady==0&&direction==2'b11)
+		regp[1]=1'b0;
+	if(headx==9&&heady==0&&direction==2'b01)
+		regp[0]=1'b0;
 	//direction=2'b11;
 	//direction=2'b00;
 	//dirrectionmove
@@ -195,6 +229,10 @@ delete=1'b1;
 			else if(blockdirection==1'b1)
 			begin
 				heady=heady+2;
+			end
+			if(headx==2||headx==5||headx==8||headx==11)
+			begin
+				headx=headx-2;
 			end
 			blockdirection=1'b0;
 		end
