@@ -7,13 +7,15 @@ output [6:0]hex3_d;
 input rst;
 //output testled;
 reg [2:0]hex_d[11:0];
-reg  [8:0]record[20:0];
-reg x;
-reg y;
+reg  [6:0]record[30:0];   // delete is 7'b11111   record every seg of snake
+reg [3:0]x;
+reg [2:0]y;
 reg [3:0]regp=3'b000;
-integer length=1;
+integer length=0;  //start from 0   length 0 actually is 1
 //reg [4:0]headx=5'd9;
 //reg [2:0]heady=3'd1;
+integer initheadx=7;
+integer initheady=0;
 integer headx;
 integer heady;
 integer tempheadx;
@@ -35,6 +37,7 @@ reg cycle;
 reg error=1'b0;
 reg delete;
 integer i;
+integer j;
 //clk,rst,hold,p,led,hex1_d,hex0_d
 /*switch control point*/
 /*initialization*/
@@ -43,15 +46,20 @@ initial begin
 	begin
 		hex_d[i]=3'b111;
 	end
-	hex_d[7][0]=1'b0;
-	headx=7;
-	heady=0;
-	//direction;
-	lasttailx=headx;
-	lasttaily=heady;
-	x=headx;
-	y=heady;
+	for (i = 0; i < 31; i = i + 1)
+	begin
+		record[i]=7'b1111111;
+	end
+	hex_d[initheadx][initheady]=1'b0;
+	headx=initheadx;
+	heady=initheady;
+	x=headx;	
+	y=heady;	
 	record[length]={x,y};
+	//direction;
+	//lasttailx=headx;
+	//lasttaily=heady;
+
 end
 /*end*/
 /*
@@ -109,6 +117,7 @@ end
 */
 always@(posedge cycle)
 begin
+	delete=1'b1;
 	if(sw[0])
 		regp[0]=1'b1;
 	if(sw[1])
@@ -125,17 +134,80 @@ begin
 	||(tempdirection==2'b10&&direction==2'b00)
 	||(tempdirection==2'b11&&direction==2'b01))
 	begin
-		//direction=tempdirection;
-		error=1'b1;
+		direction=tempdirection;
+		//error=1'b1;
 	end
 	tempdirection=direction;
-////
-	if(rst==1'b1)
+	
+	if(error==1'b0)
 	begin
+		/*point*/
+		if(headx==0&&heady==0&&direction==2'b01)
+		begin
+			regp[3]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==0&&heady==0&&direction==2'b11)
+		begin
+			regp[0]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==3&&heady==0&&direction==2'b01)
+		begin
+			regp[2]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==3&&heady==0&&direction==2'b11)
+		begin
+			regp[3]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==6&&heady==0&&direction==2'b01)
+		begin
+			regp[1]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==6&&heady==0&&direction==2'b11)
+		begin
+			regp[2]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==9&&heady==0&&direction==2'b11)
+		begin
+			regp[1]=1'b0;
+			delete=1'b0;
+		end
+		if(headx==9&&heady==0&&direction==2'b01)
+		begin
+			regp[0]=1'b0;
+			delete=1'b0;
+		end
+	end
+////
+	if(rst==1'b0)
+	begin
+		delete=1'b1;
 		error=1'b0;
 		tempdirection=2'b11;
 		direction=2'b11;
 		blockdirection=1'b0;
+		//
+		for (i = 0; i < 12; i = i + 1)
+		begin
+			hex_d[i]=3'b111;
+		end
+		for (i = 0; i < 31; i = i + 1)
+		begin
+			record[i]=7'b1111111;
+		end
+		hex_d[initheadx][initheady]=1'b0;
+		headx=initheadx;
+		heady=initheady;
+		x=headx;	
+		y=heady;	
+		record[length]={x,y};
+		//
+		length=0;
 		hex_d[0][0]=1'b1;
 		hex_d[0][1]=1'b1;
 		hex_d[0][2]=1'b1;
@@ -165,13 +237,6 @@ begin
 		hex_d[10][2]=1'b1;
 		hex_d[11][0]=1'b1;
 		hex_d[7][0]=1'b0;
-	headx=7;
-	heady=0;
-	//direction;
-	lasttailx=headx;
-	lasttaily=heady;
-	x=headx;
-	y=heady;
 	end
 	////
 	
@@ -197,23 +262,10 @@ begin
 	begin
 		direction=2'b10;
 	end
-	/*point*/
-	if(headx==0&&heady==0&&direction==2'b01)
-		regp[3]=1'b0;
-	if(headx==0&&heady==0&&direction==2'b11)
-		regp[0]=1'b0;
-	if(headx==3&&heady==0&&direction==2'b01)
-		regp[1]=1'b0;
-	if(headx==3&&heady==0&&direction==2'b11)
-		regp[3]=1'b0;
-	if(headx==6&&heady==0&&direction==2'b01)
-		regp[1]=1'b0;
-	if(headx==6&&heady==0&&direction==2'b11)
-		regp[2]=1'b0;
-	if(headx==9&&heady==0&&direction==2'b11)
-		regp[1]=1'b0;
-	if(headx==9&&heady==0&&direction==2'b01)
-		regp[0]=1'b0;
+	if(headx==initheadx&&initheady==0)
+		tempdirection=direction;
+		
+	
 	//direction=2'b11;
 	//direction=2'b00;
 	//dirrectionmove
@@ -384,6 +436,7 @@ begin
 		headx=0;
 	end
 
+/*
 	//detect eat and get longer
 	if((headx==0&&heady==0&&blockdirection==1'b1)
 		&&(headx==9&&heady==0&&blockdirection==1'b0)
@@ -400,8 +453,8 @@ begin
 	if(delete==1'b1)
 	begin
 		
-	end
-	//error detect
+	end*/
+	//error detect2
 	if(hex_d[headx][heady]==1'b0)
 		error=1'b1;
 		/*
@@ -436,12 +489,32 @@ begin
 		error=1'b1;
 	end
 	*/
-	//print
-	hex_d[headx][heady]=1'b0;
+	//print and delete tail
+	if(error==1'b0)
+	begin
+		//print
+		hex_d[headx][heady]=1'b0;
+		length=length+1;
+		x=headx;
+		y=heady;
+		record[length]={x,y};
+		if(delete==1'b1)
+		begin
+			y={record[0][2],record[0][1],record[0][0]};
+			x={record[0][6],record[0][5],record[0][4],record[0][3]};
+			hex_d[x][y]=1'b1;	
+			for(i=0;i<30;i=i+1)
+			begin
+				record[i]=record[i+1];
+			end
+			length=length-1;
+		end
+	end
+	
 	//hex_d[tempheadx][tempheady]=1'b1;
 	end
-	//error
-	if(error==1'b1)
+	//error print
+	else if(error==1'b1)
 	begin
 		hex_d[0][0]=1'b0;
 		hex_d[0][1]=1'b0;

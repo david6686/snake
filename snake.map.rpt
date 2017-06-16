@@ -1,5 +1,5 @@
 Analysis & Synthesis report for snake
-Wed Jun 14 20:41:59 2017
+Fri Jun 16 18:34:18 2017
 Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
 
 
@@ -13,14 +13,13 @@ Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |snake|direction
-  9. State Machine - |snake|tempdirection
+  8. State Machine - |snake|tempdirection
+  9. State Machine - |snake|direction
  10. Registers Removed During Synthesis
  11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Analysis & Synthesis Messages
- 15. Analysis & Synthesis Suppressed Messages
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Analysis & Synthesis Messages
+ 14. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -46,15 +45,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jun 14 20:41:59 2017        ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 16 18:34:17 2017        ;
 ; Quartus II Version                 ; 9.1 Build 304 01/25/2010 SP 1 SJ Web Edition ;
 ; Revision Name                      ; snake                                        ;
 ; Top-level Entity Name              ; snake                                        ;
 ; Family                             ; Cyclone III                                  ;
-; Total logic elements               ; 691                                          ;
-;     Total combinational functions  ; 690                                          ;
-;     Dedicated logic registers      ; 110                                          ;
-; Total registers                    ; 110                                          ;
+; Total logic elements               ; 1,392                                        ;
+;     Total combinational functions  ; 1,391                                        ;
+;     Dedicated logic registers      ; 360                                          ;
+; Total registers                    ; 360                                          ;
 ; Total pins                         ; 41                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
@@ -153,18 +152,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 4      ;
+; Number detected on machine ; 2      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                            ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path        ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+
-; snake.v                          ; yes             ; User Verilog HDL File  ; C:/Users/user/Desktop/snake/snake.v ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                          ;
++----------------------------------+-----------------+------------------------+-----------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path      ;
++----------------------------------+-----------------+------------------------+-----------------------------------+
+; snake.v                          ; yes             ; User Verilog HDL File  ; C:/Users/zp/Desktop/snake/snake.v ;
++----------------------------------+-----------------+------------------------+-----------------------------------+
 
 
 +-----------------------------------------------------+
@@ -172,27 +171,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 691   ;
+; Estimated Total logic elements              ; 1,392 ;
 ;                                             ;       ;
-; Total combinational functions               ; 690   ;
+; Total combinational functions               ; 1391  ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 331   ;
-;     -- 3 input functions                    ; 87    ;
-;     -- <=2 input functions                  ; 272   ;
+;     -- 4 input functions                    ; 790   ;
+;     -- 3 input functions                    ; 263   ;
+;     -- <=2 input functions                  ; 338   ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 451   ;
-;     -- arithmetic mode                      ; 239   ;
+;     -- normal mode                          ; 1090  ;
+;     -- arithmetic mode                      ; 301   ;
 ;                                             ;       ;
-; Total registers                             ; 110   ;
-;     -- Dedicated logic registers            ; 110   ;
+; Total registers                             ; 360   ;
+;     -- Dedicated logic registers            ; 360   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 41    ;
 ; Maximum fan-out node                        ; cycle ;
-; Maximum fan-out                             ; 83    ;
-; Total fan-out                               ; 2452  ;
-; Average fan-out                             ; 2.78  ;
+; Maximum fan-out                             ; 333   ;
+; Total fan-out                               ; 6029  ;
+; Average fan-out                             ; 3.29  ;
 +---------------------------------------------+-------+
 
 
@@ -201,22 +200,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |snake                     ; 690 (690)         ; 110 (110)    ; 0           ; 0            ; 0       ; 0         ; 41   ; 0            ; |snake              ; work         ;
+; |snake                     ; 1391 (1391)       ; 360 (360)    ; 0           ; 0            ; 0       ; 0         ; 41   ; 0            ; |snake              ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------+
-; State Machine - |snake|direction                                         ;
-+--------------+--------------+--------------+--------------+--------------+
-; Name         ; direction.00 ; direction.10 ; direction.01 ; direction.11 ;
-+--------------+--------------+--------------+--------------+--------------+
-; direction.11 ; 0            ; 0            ; 0            ; 0            ;
-; direction.01 ; 0            ; 0            ; 1            ; 1            ;
-; direction.10 ; 0            ; 1            ; 0            ; 1            ;
-; direction.00 ; 1            ; 0            ; 0            ; 1            ;
-+--------------+--------------+--------------+--------------+--------------+
 
 
 Encoding Type:  One-Hot
@@ -232,19 +218,31 @@ Encoding Type:  One-Hot
 +------------------+------------------+------------------+------------------+------------------+
 
 
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------+
+; State Machine - |snake|direction                                         ;
++--------------+--------------+--------------+--------------+--------------+
+; Name         ; direction.00 ; direction.10 ; direction.01 ; direction.11 ;
++--------------+--------------+--------------+--------------+--------------+
+; direction.11 ; 0            ; 0            ; 0            ; 0            ;
+; direction.01 ; 0            ; 0            ; 1            ; 1            ;
+; direction.10 ; 0            ; 1            ; 0            ; 1            ;
+; direction.00 ; 1            ; 0            ; 0            ; 1            ;
++--------------+--------------+--------------+--------------+--------------+
+
+
 +---------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                              ;
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; hex_d[7][0]                            ; Stuck at GND due to stuck port data_in ;
 ; heady[2..31]                           ; Stuck at GND due to stuck port data_in ;
-; direction~2                            ; Lost fanout                            ;
-; direction~3                            ; Lost fanout                            ;
 ; tempdirection~2                        ; Lost fanout                            ;
 ; tempdirection~3                        ; Lost fanout                            ;
+; direction~2                            ; Lost fanout                            ;
+; direction~3                            ; Lost fanout                            ;
 ; clkcount[26]                           ; Lost fanout                            ;
-; Total Number of Removed Registers = 36 ;                                        ;
+; Total Number of Removed Registers = 35 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -253,61 +251,14 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 110   ;
-; Number of registers using Synchronous Clear  ; 1     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 360   ;
+; Number of registers using Synchronous Clear  ; 25    ;
+; Number of registers using Synchronous Load   ; 183   ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 39    ;
+; Number of registers using Clock Enable       ; 320   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+---------------------------------------------------+
-; Inverted Register Statistics                      ;
-+-----------------------------------------+---------+
-; Inverted Register                       ; Fan out ;
-+-----------------------------------------+---------+
-; hex_d[11][0]                            ; 3       ;
-; hex_d[10][2]                            ; 3       ;
-; hex_d[9][2]                             ; 3       ;
-; hex_d[9][0]                             ; 3       ;
-; hex_d[9][1]                             ; 3       ;
-; hex_d[10][1]                            ; 3       ;
-; hex_d[10][0]                            ; 3       ;
-; hex_d[8][0]                             ; 3       ;
-; hex_d[7][2]                             ; 3       ;
-; hex_d[6][2]                             ; 3       ;
-; hex_d[6][0]                             ; 3       ;
-; hex_d[6][1]                             ; 3       ;
-; hex_d[7][1]                             ; 3       ;
-; hex_d[5][0]                             ; 3       ;
-; hex_d[4][2]                             ; 3       ;
-; hex_d[3][2]                             ; 3       ;
-; hex_d[3][0]                             ; 3       ;
-; hex_d[3][1]                             ; 3       ;
-; hex_d[4][1]                             ; 3       ;
-; hex_d[4][0]                             ; 3       ;
-; hex_d[2][0]                             ; 3       ;
-; hex_d[1][2]                             ; 3       ;
-; hex_d[0][2]                             ; 3       ;
-; hex_d[0][0]                             ; 3       ;
-; hex_d[0][1]                             ; 3       ;
-; hex_d[1][1]                             ; 3       ;
-; hex_d[1][0]                             ; 3       ;
-; headx[0]                                ; 15      ;
-; headx[2]                                ; 15      ;
-; headx[1]                                ; 18      ;
-; hex_d[5][2]                             ; 2       ;
-; hex_d[5][1]                             ; 2       ;
-; hex_d[11][2]                            ; 2       ;
-; hex_d[8][2]                             ; 2       ;
-; hex_d[8][1]                             ; 2       ;
-; hex_d[11][1]                            ; 2       ;
-; hex_d[2][2]                             ; 2       ;
-; hex_d[2][1]                             ; 2       ;
-; Total number of inverted registers = 38 ;         ;
-+-----------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------+
@@ -315,11 +266,16 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 62 bits   ; 124 LEs       ; 62 LEs               ; 62 LEs                 ; Yes        ; |snake|headx[12]           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |snake|headx[2]            ;
+; 3:1                ; 65 bits   ; 130 LEs       ; 65 LEs               ; 65 LEs                 ; Yes        ; |snake|heady[15]           ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |snake|record[30][4]       ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |snake|record[30][0]       ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |snake|length[11]          ;
+; 5:1                ; 106 bits  ; 318 LEs       ; 212 LEs              ; 106 LEs                ; Yes        ; |snake|record[24][5]       ;
+; 5:1                ; 120 bits  ; 360 LEs       ; 240 LEs              ; 120 LEs                ; Yes        ; |snake|record[21][2]       ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |snake|direction           ;
-; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; No         ; |snake|Selector9           ;
-; 12:1               ; 30 bits   ; 240 LEs       ; 150 LEs              ; 90 LEs                 ; No         ; |snake|Selector47          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |snake|tempdirection       ;
+; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; No         ; |snake|Selector20          ;
+; 12:1               ; 30 bits   ; 240 LEs       ; 150 LEs              ; 90 LEs                 ; No         ; |snake|Selector38          ;
 ; 15:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |snake|headx               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
@@ -330,7 +286,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Jun 14 20:41:55 2017
+    Info: Processing started: Fri Jun 16 18:33:59 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off snake -c snake
 Info: Found 1 design units, including 1 entities, in source file snake.v
     Info: Found entity 1: snake
@@ -345,39 +301,41 @@ Info: Found 1 design units, including 1 entities, in source file down.v
 Info: Found 1 design units, including 1 entities, in source file directionmove.v
     Info: Found entity 1: directionmove
 Info: Elaborating entity "snake" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at snake.v(10): object "record" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at snake.v(20): object "tempheady" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at snake.v(21): object "lasttailx" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at snake.v(22): object "lasttaily" assigned a value but never read
-Warning (10230): Verilog HDL assignment warning at snake.v(52): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at snake.v(53): truncated value with size 32 to match size of target (1)
-Warning (10855): Verilog HDL warning at snake.v(41): initial value for variable record should be constant
-Warning (10230): Verilog HDL assignment warning at snake.v(173): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at snake.v(174): truncated value with size 32 to match size of target (1)
-Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "hex2_d[6]" is stuck at GND
+Warning (10036): Verilog HDL or VHDL warning at snake.v(22): object "tempheady" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at snake.v(56): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(57): truncated value with size 32 to match size of target (3)
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable hex_d should be constant
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable record should be constant
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable headx should be constant
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable heady should be constant
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable x should be constant
+Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable y should be constant
+Warning (10230): Verilog HDL assignment warning at snake.v(206): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(207): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at snake.v(498): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(499): truncated value with size 32 to match size of target (3)
 Info: Timing-Driven Synthesis is running
 Info: 5 registers lost all their fanouts during netlist optimizations. The first 5 are displayed below.
-    Info: Register "direction~2" lost all its fanouts during netlist optimizations.
-    Info: Register "direction~3" lost all its fanouts during netlist optimizations.
     Info: Register "tempdirection~2" lost all its fanouts during netlist optimizations.
     Info: Register "tempdirection~3" lost all its fanouts during netlist optimizations.
+    Info: Register "direction~2" lost all its fanouts during netlist optimizations.
+    Info: Register "direction~3" lost all its fanouts during netlist optimizations.
     Info: Register "clkcount[26]" lost all its fanouts during netlist optimizations.
-Info: Generated suppressed messages file C:/Users/user/Desktop/snake/snake.map.smsg
-Info: Implemented 732 device resources after synthesis - the final resource count might be different
+Info: Generated suppressed messages file C:/Users/zp/Desktop/snake/snake.map.smsg
+Info: Implemented 1433 device resources after synthesis - the final resource count might be different
     Info: Implemented 9 input pins
     Info: Implemented 32 output pins
-    Info: Implemented 691 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 212 megabytes
-    Info: Processing ended: Wed Jun 14 20:41:59 2017
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Implemented 1392 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 245 megabytes
+    Info: Processing ended: Fri Jun 16 18:34:18 2017
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:15
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/user/Desktop/snake/snake.map.smsg.
+The suppressed messages can be found in C:/Users/zp/Desktop/snake/snake.map.smsg.
 
 

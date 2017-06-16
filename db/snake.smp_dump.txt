@@ -1,14 +1,14 @@
 
-State Machine - |snake|direction
-Name direction.00 direction.10 direction.01 direction.11 
-direction.11 0 0 0 0 
-direction.01 0 0 1 1 
-direction.10 0 1 0 1 
-direction.00 1 0 0 1 
-
 State Machine - |snake|tempdirection
 Name tempdirection.00 tempdirection.10 tempdirection.01 tempdirection.11 
 tempdirection.11 0 0 0 0 
 tempdirection.01 0 0 1 1 
 tempdirection.10 0 1 0 1 
 tempdirection.00 1 0 0 1 
+
+State Machine - |snake|direction
+Name direction.00 direction.10 direction.01 direction.11 
+direction.11 0 0 0 0 
+direction.01 0 0 1 1 
+direction.10 0 1 0 1 
+direction.00 1 0 0 1 
