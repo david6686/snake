@@ -129,14 +129,35 @@ begin
 	delete=1'b1;
 	tempheadx=headx;
 	tempheady=heady;
+	//direction
+	if(button[2]==1'b1)
+	begin
+		if(button[1]==1'b0&&button[0]==1'b1)
+		begin
+			direction=2'b11;
+		end
+		else if(button[1]==1'b1&&button[0]==1'b0)
+		begin
+			direction=2'b01;
+		end
+		else
+		begin
+			direction=2'b00;
+		end
+	end
+	else
+	begin
+		direction=2'b10;
+	end
+	/*
 	if((tempdirection==2'b00&&direction==2'b10)
 	||(tempdirection==2'b01&&direction==2'b11)
 	||(tempdirection==2'b10&&direction==2'b00)
 	||(tempdirection==2'b11&&direction==2'b01))
 	begin
-		direction=tempdirection;
+		//direction=tempdirection;
 		//error=1'b1;
-	end
+	end*/
 	tempdirection=direction;
 	
 	if(error==1'b0)
@@ -242,26 +263,7 @@ begin
 	
 	else if(error==1'b0)
 	begin
-	//direction
-	if(button[2]==1'b1)
-	begin
-		if(button[1]==1'b0&&button[0]==1'b1)
-		begin
-			direction=2'b11;
-		end
-		else if(button[1]==1'b1&&button[0]==1'b0)
-		begin
-			direction=2'b01;
-		end
-		else
-		begin
-			direction=2'b00;
-		end
-	end
-	else
-	begin
-		direction=2'b10;
-	end
+
 	if(headx==initheadx&&initheady==0)
 		tempdirection=direction;
 		

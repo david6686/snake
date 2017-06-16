@@ -129,12 +129,32 @@ begin
 	delete=1'b1;
 	tempheadx=headx;
 	tempheady=heady;
+	//direction
+	if(button[2]==1'b1)
+	begin
+		if(button[1]==1'b0&&button[0]==1'b1)
+		begin
+			direction=2'b11;
+		end
+		else if(button[1]==1'b1&&button[0]==1'b0)
+		begin
+			direction=2'b01;
+		end
+		else
+		begin
+			direction=2'b00;
+		end
+	end
+	else
+	begin
+		direction=2'b10;
+	end
 	if((tempdirection==2'b00&&direction==2'b10)
 	||(tempdirection==2'b01&&direction==2'b11)
 	||(tempdirection==2'b10&&direction==2'b00)
 	||(tempdirection==2'b11&&direction==2'b01))
 	begin
-		direction=tempdirection;
+		//direction=tempdirection;
 		//error=1'b1;
 	end
 	tempdirection=direction;
@@ -242,26 +262,7 @@ begin
 	
 	else if(error==1'b0)
 	begin
-	//direction
-	if(button[2]==1'b1)
-	begin
-		if(button[1]==1'b0&&button[0]==1'b1)
-		begin
-			direction=2'b11;
-		end
-		else if(button[1]==1'b1&&button[0]==1'b0)
-		begin
-			direction=2'b01;
-		end
-		else
-		begin
-			direction=2'b00;
-		end
-	end
-	else
-	begin
-		direction=2'b10;
-	end
+
 	if(headx==initheadx&&initheady==0)
 		tempdirection=direction;
 		
@@ -500,8 +501,8 @@ begin
 		record[length]={x,y};
 		if(delete==1'b1)
 		begin
-			x={record[0][2],record[0][1],record[0][0]};
-			y={record[0][6],record[0][5],record[0][4],record[0][3]};
+			y={record[0][2],record[0][1],record[0][0]};
+			x={record[0][6],record[0][5],record[0][4],record[0][3]};
 			hex_d[x][y]=1'b1;	
 			for(i=0;i<30;i=i+1)
 			begin
