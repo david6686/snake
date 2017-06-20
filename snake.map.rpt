@@ -1,5 +1,5 @@
 Analysis & Synthesis report for snake
-Fri Jun 16 19:08:22 2017
+Tue Jun 20 16:53:54 2017
 Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
 
 
@@ -45,7 +45,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 16 19:08:22 2017        ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 20 16:53:54 2017        ;
 ; Quartus II Version                 ; 9.1 Build 304 01/25/2010 SP 1 SJ Web Edition ;
 ; Revision Name                      ; snake                                        ;
 ; Top-level Entity Name              ; snake                                        ;
@@ -292,7 +292,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Jun 16 19:08:05 2017
+    Info: Processing started: Tue Jun 20 16:53:40 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off snake -c snake
 Info: Found 1 design units, including 1 entities, in source file snake.v
     Info: Found entity 1: snake
@@ -307,20 +307,20 @@ Info: Found 1 design units, including 1 entities, in source file down.v
 Info: Found 1 design units, including 1 entities, in source file directionmove.v
     Info: Found entity 1: directionmove
 Info: Elaborating entity "snake" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at snake.v(22): object "tempheady" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at snake.v(27): object "tempdirection" assigned a value but never read
-Warning (10230): Verilog HDL assignment warning at snake.v(56): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at snake.v(57): truncated value with size 32 to match size of target (3)
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable hex_d should be constant
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable record should be constant
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable headx should be constant
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable heady should be constant
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable x should be constant
-Warning (10855): Verilog HDL warning at snake.v(44): initial value for variable y should be constant
-Warning (10230): Verilog HDL assignment warning at snake.v(227): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at snake.v(228): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at snake.v(500): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at snake.v(501): truncated value with size 32 to match size of target (3)
+Warning (10036): Verilog HDL or VHDL warning at snake.v(31): object "tempheady" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at snake.v(37): object "tempdirection" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at snake.v(67): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(68): truncated value with size 32 to match size of target (3)
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable hex_d should be constant
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable record should be constant
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable headx should be constant
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable heady should be constant
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable x should be constant
+Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable y should be constant
+Warning (10230): Verilog HDL assignment warning at snake.v(239): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(240): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at snake.v(513): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(514): truncated value with size 32 to match size of target (3)
 Info: Timing-Driven Synthesis is running
 Info: 13 registers lost all their fanouts during netlist optimizations. The first 13 are displayed below.
     Info: Register "tempdirection.11" lost all its fanouts during netlist optimizations.
@@ -343,9 +343,9 @@ Info: Implemented 1443 device resources after synthesis - the final resource cou
     Info: Implemented 1402 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 14 warnings
     Info: Peak virtual memory: 246 megabytes
-    Info: Processing ended: Fri Jun 16 19:08:22 2017
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:15
+    Info: Processing ended: Tue Jun 20 16:53:54 2017
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:14
 
 
 +------------------------------------------+

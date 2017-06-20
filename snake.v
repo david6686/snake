@@ -1,30 +1,41 @@
 module snake(hex3_d,hex2_d,hex1_d,hex0_d,p,sw,button,clk,rst);
 //hex3_d,hex2_d,hex1_d,hex0_d
+//7-seg
 output [6:0]hex0_d;
 output [6:0]hex1_d;
 output [6:0]hex2_d;
 output [6:0]hex3_d;
+//reset
 input rst;
 //output testled;
+//2-d array for 7seg
 reg [2:0]hex_d[11:0];
+//record location of snake
 reg  [6:0]record[30:0];   // delete is 7'b11111   record every seg of snake
+//the reg for current location
 reg [3:0]x;
 reg [2:0]y;
+//reg for point
 reg [3:0]regp=3'b000;
+//snake length
 integer length=0;  //start from 0   length 0 actually is 1
 //reg [4:0]headx=5'd9;
 //reg [2:0]heady=3'd1;
+//init value
 integer initheadx=7;
 integer initheady=0;
 integer headx;
 integer heady;
+//the last location
 integer tempheadx;
 integer tempheady;
-integer lasttailx;
-integer lasttaily;
-integer secondtailx;
-integer secondtaily;
+//integer lasttailx;
+//integer lasttaily;
+//integer secondtailx;
+//integer secondtaily;
+//last direction
 reg [1:0]tempdirection=2'b11;
+//current direction
 reg [1:0]direction=2'b11;
 //integer direction=0;
 reg blockdirection=1'b0;
@@ -162,7 +173,7 @@ begin
 	
 	if(error==1'b0)
 	begin
-		/*point*/
+		/*point print*/
 		if(headx==0&&heady==0&&direction==2'b01)
 		begin
 			regp[3]=1'b0;
@@ -205,6 +216,7 @@ begin
 		end
 	end
 ////
+//reset
 	if(rst==1'b0)
 	begin
 		delete=1'b1;
@@ -264,13 +276,14 @@ begin
 	else if(error==1'b0)
 	begin
 
-	if(headx==initheadx&&initheady==0)
+	if(headx==initheadx&&heady==initheady)
 		tempdirection=direction;
 		
 	
 	//direction=2'b11;
 	//direction=2'b00;
-	//dirrectionmove
+	
+	//dirrectionmove mdethod
 	case(direction)
 	2'b00:
 	begin
@@ -456,7 +469,7 @@ begin
 	begin
 		
 	end*/
-	//error detect2
+	//error detect2  if have same location light
 	if(hex_d[headx][heady]==1'b0)
 		error=1'b1;
 		/*
