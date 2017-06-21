@@ -174,42 +174,42 @@ begin
 	if(error==1'b0)
 	begin
 		/*point print*/
-		if(headx==0&&heady==0&&direction==2'b01)
+		if(headx==0&&heady==0&&direction==2'b01&&regp[3]==1'b1)
 		begin
 			regp[3]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==0&&heady==0&&direction==2'b11)
+		if(headx==0&&heady==0&&direction==2'b11&&regp[0]==1'b1)
 		begin
 			regp[0]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==3&&heady==0&&direction==2'b01)
+		if(headx==3&&heady==0&&direction==2'b01&&regp[2]==1'b1)
 		begin
 			regp[2]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==3&&heady==0&&direction==2'b11)
+		if(headx==3&&heady==0&&direction==2'b11&&regp[3]==1'b1)
 		begin
 			regp[3]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==6&&heady==0&&direction==2'b01)
+		if(headx==6&&heady==0&&direction==2'b01&&regp[1]==1'b1)
 		begin
 			regp[1]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==6&&heady==0&&direction==2'b11)
+		if(headx==6&&heady==0&&direction==2'b11&&regp[2]==1'b1)
 		begin
 			regp[2]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==9&&heady==0&&direction==2'b11)
+		if(headx==9&&heady==0&&direction==2'b11&&regp[1]==1'b1)
 		begin
 			regp[1]=1'b0;
 			delete=1'b0;
 		end
-		if(headx==9&&heady==0&&direction==2'b01)
+		if(headx==9&&heady==0&&direction==2'b01&&regp[0]==1'b1)
 		begin
 			regp[0]=1'b0;
 			delete=1'b0;
@@ -233,7 +233,7 @@ begin
 		begin
 			record[i]=7'b1111111;
 		end
-		hex_d[initheadx][initheady]=1'b0;
+		//hex_d[initheadx][initheady]=1'b0;
 		headx=initheadx;
 		heady=initheady;
 		x=headx;	
@@ -269,7 +269,7 @@ begin
 		hex_d[10][1]=1'b1;
 		hex_d[10][2]=1'b1;
 		hex_d[11][0]=1'b1;
-		hex_d[7][0]=1'b0;
+		hex_d[initheadx][initheady]=1'b0;
 	end
 	////
 	
@@ -469,6 +469,23 @@ begin
 	begin
 		
 	end*/
+	
+	
+	//delete tail
+	if(error==1'b0)
+	begin
+		if(delete==1'b1)
+		begin
+			y={record[0][2],record[0][1],record[0][0]};
+			x={record[0][6],record[0][5],record[0][4],record[0][3]};
+			hex_d[x][y]=1'b1;	
+			for(i=0;i<30;i=i+1)
+			begin
+				record[i]=record[i+1];
+			end
+			length=length-1;
+		end
+	end
 	//error detect2  if have same location light
 	if(hex_d[headx][heady]==1'b0)
 		error=1'b1;
@@ -504,7 +521,7 @@ begin
 		error=1'b1;
 	end
 	*/
-	//print and delete tail
+	//print
 	if(error==1'b0)
 	begin
 		//print
@@ -513,6 +530,7 @@ begin
 		x=headx;
 		y=heady;
 		record[length]={x,y};
+		/*
 		if(delete==1'b1)
 		begin
 			y={record[0][2],record[0][1],record[0][0]};
@@ -523,7 +541,7 @@ begin
 				record[i]=record[i+1];
 			end
 			length=length-1;
-		end
+		end*/
 	end
 	
 	//hex_d[tempheadx][tempheady]=1'b1;

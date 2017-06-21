@@ -1,5 +1,5 @@
 Analysis & Synthesis report for snake
-Tue Jun 20 16:53:54 2017
+Wed Jun 21 19:11:07 2017
 Quartus II Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
 
 
@@ -45,13 +45,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jun 20 16:53:54 2017        ;
+; Analysis & Synthesis Status        ; Successful - Wed Jun 21 19:11:06 2017        ;
 ; Quartus II Version                 ; 9.1 Build 304 01/25/2010 SP 1 SJ Web Edition ;
 ; Revision Name                      ; snake                                        ;
 ; Top-level Entity Name              ; snake                                        ;
 ; Family                             ; Cyclone III                                  ;
-; Total logic elements               ; 1,402                                        ;
-;     Total combinational functions  ; 1,401                                        ;
+; Total logic elements               ; 1,211                                        ;
+;     Total combinational functions  ; 1,207                                        ;
 ;     Dedicated logic registers      ; 352                                          ;
 ; Total registers                    ; 352                                          ;
 ; Total pins                         ; 41                                           ;
@@ -152,18 +152,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 2      ;
+; Number detected on machine ; 4      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                          ;
-+----------------------------------+-----------------+------------------------+-----------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path      ;
-+----------------------------------+-----------------+------------------------+-----------------------------------+
-; snake.v                          ; yes             ; User Verilog HDL File  ; C:/Users/zp/Desktop/snake/snake.v ;
-+----------------------------------+-----------------+------------------------+-----------------------------------+
++-------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                            ;
++----------------------------------+-----------------+------------------------+-------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path        ;
++----------------------------------+-----------------+------------------------+-------------------------------------+
+; snake.v                          ; yes             ; User Verilog HDL File  ; C:/Users/user/Desktop/snake/snake.v ;
++----------------------------------+-----------------+------------------------+-------------------------------------+
 
 
 +---------------------------------------------------------+
@@ -171,16 +171,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 1,402     ;
+; Estimated Total logic elements              ; 1,211     ;
 ;                                             ;           ;
-; Total combinational functions               ; 1401      ;
+; Total combinational functions               ; 1207      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 629       ;
-;     -- 3 input functions                    ; 452       ;
-;     -- <=2 input functions                  ; 320       ;
+;     -- 4 input functions                    ; 575       ;
+;     -- 3 input functions                    ; 321       ;
+;     -- <=2 input functions                  ; 311       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 1100      ;
+;     -- normal mode                          ; 906       ;
 ;     -- arithmetic mode                      ; 301       ;
 ;                                             ;           ;
 ; Total registers                             ; 352       ;
@@ -189,9 +189,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;           ;
 ; I/O pins                                    ; 41        ;
 ; Maximum fan-out node                        ; rst~input ;
-; Maximum fan-out                             ; 338       ;
-; Total fan-out                               ; 5894      ;
-; Average fan-out                             ; 3.21      ;
+; Maximum fan-out                             ; 351       ;
+; Total fan-out                               ; 5276      ;
+; Average fan-out                             ; 3.22      ;
 +---------------------------------------------+-----------+
 
 
@@ -200,7 +200,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |snake                     ; 1401 (1401)       ; 352 (352)    ; 0           ; 0            ; 0       ; 0         ; 41   ; 0            ; |snake              ; work         ;
+; |snake                     ; 1207 (1207)       ; 352 (352)    ; 0           ; 0            ; 0       ; 0         ; 41   ; 0            ; |snake              ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -260,11 +260,11 @@ Encoding Type:  One-Hot
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 352   ;
-; Number of registers using Synchronous Clear  ; 19    ;
-; Number of registers using Synchronous Load   ; 183   ;
+; Number of registers using Synchronous Clear  ; 35    ;
+; Number of registers using Synchronous Load   ; 208   ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 320   ;
+; Number of registers using Clock Enable       ; 292   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -274,14 +274,73 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 65 bits   ; 130 LEs       ; 65 LEs               ; 65 LEs                 ; Yes        ; |snake|heady[12]           ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |snake|record[30][3]       ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |snake|record[30][1]       ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |snake|length[10]          ;
-; 5:1                ; 106 bits  ; 318 LEs       ; 212 LEs              ; 106 LEs                ; Yes        ; |snake|record[21][3]       ;
-; 5:1                ; 120 bits  ; 360 LEs       ; 240 LEs              ; 120 LEs                ; Yes        ; |snake|record[22][6]       ;
+; 3:1                ; 65 bits   ; 130 LEs       ; 65 LEs               ; 65 LEs                 ; Yes        ; |snake|headx[27]           ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |snake|length[22]          ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |snake|record[30][5]       ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |snake|record[30][0]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[29][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[29][2]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[28][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[28][0]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[27][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[27][2]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[26][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[26][0]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[25][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[25][0]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[24][4]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[24][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[23][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[23][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[22][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[22][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[21][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[21][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[20][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[20][1]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[19][4]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[19][0]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[18][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[18][2]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[17][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[17][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[16][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[16][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[15][4]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[15][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[14][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[14][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[13][5]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[13][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[12][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[12][1]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[11][3]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[11][6]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[10][4]       ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[10][2]       ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[9][4]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[9][0]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[8][4]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[8][1]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[7][5]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[7][6]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[6][5]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[6][0]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[5][3]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[5][6]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[4][4]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[4][0]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[3][3]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[3][0]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[2][5]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[2][6]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[1][4]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[1][0]        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |snake|record[0][3]        ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |snake|record[0][6]        ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |snake|length              ;
 ; 5:1                ; 31 bits   ; 93 LEs        ; 62 LEs               ; 31 LEs                 ; No         ; |snake|Selector27          ;
-; 12:1               ; 30 bits   ; 240 LEs       ; 150 LEs              ; 90 LEs                 ; No         ; |snake|Selector32          ;
+; 12:1               ; 30 bits   ; 240 LEs       ; 150 LEs              ; 90 LEs                 ; No         ; |snake|Selector44          ;
 ; 15:1               ; 32 bits   ; 320 LEs       ; 320 LEs              ; 0 LEs                  ; No         ; |snake|headx               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
@@ -292,20 +351,15 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 304 01/25/2010 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Jun 20 16:53:40 2017
+    Info: Processing started: Wed Jun 21 19:10:56 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off snake -c snake
 Info: Found 1 design units, including 1 entities, in source file snake.v
     Info: Found entity 1: snake
-Info: Found 1 design units, including 1 entities, in source file up.v
-    Info: Found entity 1: up
-Info: Found 1 design units, including 1 entities, in source file left.v
-    Info: Found entity 1: left
-Info: Found 1 design units, including 1 entities, in source file right.v
-    Info: Found entity 1: right
-Info: Found 1 design units, including 1 entities, in source file down.v
-    Info: Found entity 1: down
-Info: Found 1 design units, including 1 entities, in source file directionmove.v
-    Info: Found entity 1: directionmove
+Warning: Can't analyze file -- file up.v is missing
+Warning: Can't analyze file -- file left.v is missing
+Warning: Can't analyze file -- file right.v is missing
+Warning: Can't analyze file -- file down.v is missing
+Warning: Can't analyze file -- file directionmove.v is missing
 Info: Elaborating entity "snake" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at snake.v(31): object "tempheady" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at snake.v(37): object "tempdirection" assigned a value but never read
@@ -319,8 +373,8 @@ Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable 
 Warning (10855): Verilog HDL warning at snake.v(55): initial value for variable y should be constant
 Warning (10230): Verilog HDL assignment warning at snake.v(239): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at snake.v(240): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at snake.v(513): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at snake.v(514): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at snake.v(530): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at snake.v(531): truncated value with size 32 to match size of target (3)
 Info: Timing-Driven Synthesis is running
 Info: 13 registers lost all their fanouts during netlist optimizations. The first 13 are displayed below.
     Info: Register "tempdirection.11" lost all its fanouts during netlist optimizations.
@@ -336,21 +390,21 @@ Info: 13 registers lost all their fanouts during netlist optimizations. The firs
     Info: Register "direction~2" lost all its fanouts during netlist optimizations.
     Info: Register "direction~3" lost all its fanouts during netlist optimizations.
     Info: Register "clkcount[26]" lost all its fanouts during netlist optimizations.
-Info: Generated suppressed messages file C:/Users/zp/Desktop/snake/snake.map.smsg
-Info: Implemented 1443 device resources after synthesis - the final resource count might be different
+Info: Generated suppressed messages file C:/Users/user/Desktop/snake/snake.map.smsg
+Info: Implemented 1257 device resources after synthesis - the final resource count might be different
     Info: Implemented 9 input pins
     Info: Implemented 32 output pins
-    Info: Implemented 1402 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 246 megabytes
-    Info: Processing ended: Tue Jun 20 16:53:54 2017
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Implemented 1216 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 19 warnings
+    Info: Peak virtual memory: 214 megabytes
+    Info: Processing ended: Wed Jun 21 19:11:07 2017
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/zp/Desktop/snake/snake.map.smsg.
+The suppressed messages can be found in C:/Users/user/Desktop/snake/snake.map.smsg.
 
 
